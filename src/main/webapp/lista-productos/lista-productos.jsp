@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+<%@page import="org.diegogarcia.webapp.model.Producto"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,13 +30,13 @@
             <div class="offcanvas-body">
               <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a class="nav-link" href="../index.jsp">Inicio</a>
+                  <a class="nav-link" href="./index.jsp">Inicio</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="./../formulario-productos/formulario-productos.jsp">Formulario</a>
+                  <a class="nav-link" href="./formulario-productos/formulario-productos.jsp">Formulario</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="./listado-productos/listado-productos.jsp">Lista</a>
+                  <a class="nav-link active" aria-current="page" href="./producto-servlet">Lista</a>
                 </li>
               </ul>
             </div>
@@ -54,41 +56,16 @@
               </tr>
             </thead>
             <tbody class="table-group-divider">
-              <tr>
-                <th scope="row">1</th>
-                <td>Donas Bimbo</td>
-                <td>Donas cubiertas con azucar glas</td>
-                <td>Bimbo</td>
-                <td>Q4.00</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Coca-Cola</td>
-                <td>Agua soda 350ml</td>
-                <td>Coca-Cola</td>
-                <td>Q8.00</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Chetos</td>
-                <td>Fritura con Sabor a Queso</td>
-                <td>Frito-Lay</td>
-                <td>Q4.50</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Doritos sweet & tangy BBQ</td>
-                <td>Nachos con sabor a barbacoa</td>
-                <td>Doritos</td>
-                <td>Q14.50</td>
-              </tr>
-              <tr>
-                <th scope="row">5</th>
-                <td>Sprite</td>
-                <td>Gaseosa con sabor a limón de 3Lt</td>
-                <td>Coca-Cola</td>
-                <td>Q14.50</td>
-              </tr>
+                    <% List<Producto> productos = (List)request.getAttribute("productos"); %>
+                    <% for(Producto producto:productos){%>
+                        <tr>
+                            <th scope="row"><%=producto.getProductoId()%>
+                            <td><%=producto.getMarcaProducto()%></td>
+                            <td><%=producto.getNombreProducto()%></td>
+                            <td><%=producto.getNombreProducto()%></td>
+                            <td><%=producto.getNombreProducto()%></td>
+                        </tr>
+                        <%}%>
             </tbody>
           </table>
       </div>

@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/SDBGDgarcia"/>
+<Context path="/SDBG">
+<Resource name="jdbc/SDBG" auth="Container" type="javax.sql.DataSource"
+               maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+               username="Dgarcia-2023112" password="159632102Diego" driverClassName="com.mysql.cj.jdbc.Driver"
+               url="jdbc:mysql://localhost:3306/SDBG?serverTimezone=GMT-6"/>
+</Context>
