@@ -1,5 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="org.diegogarcia.webapp.model.Producto"%>
+<%@page import="org.diegogarcia.webapp.model.Producto"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -43,14 +45,14 @@
         <% if(producto != null){
             for(String prod : producto){%>
         <ul>
-            <li class="list-unstyled"><%=producto%></li>
+            <li class="list-unstyled"><%=prod%></li>
         </ul>
        <%}
        }%>
         </div>
 
       <div class="container mt-5 w-75">
-          <form action="/SDBGDgarcia/producto-servlet" method="post" enctype="multipart/form-data">
+          <form action="/SDBG/producto-servlet" method="post" enctype="multipart/form-data">
                  <div class="form-floating mb-4">
                  <input  type="text" class="form-control" id="NombreProducto" name="nombreProducto" placeholder="" required>
                  <label for="NombreProducto">Nombre del Producto</label>

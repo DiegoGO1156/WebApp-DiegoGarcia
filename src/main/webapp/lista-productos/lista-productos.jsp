@@ -60,10 +60,10 @@
                     <% for(Producto producto:productos){%>
                         <tr>
                             <th scope="row"><%=producto.getProductoId()%>
+                            <td><%=producto.getNombreProducto()%></td>
                             <td><%=producto.getMarcaProducto()%></td>
-                            <td><%=producto.getNombreProducto()%></td>
-                            <td><%=producto.getNombreProducto()%></td>
-                            <td><%=producto.getNombreProducto()%></td>
+                            <td><%=producto.getDescripcionProducto()%></td>
+                            <td><%=producto.getPrecio()%></td>
                         </tr>
                         <%}%>
             </tbody>

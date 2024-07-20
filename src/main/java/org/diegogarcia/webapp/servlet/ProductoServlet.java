@@ -22,25 +22,27 @@ public class ProductoServlet extends HttpServlet{
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       String path = req.getContextPath();
        
-        resp.setContentType("text/html");
+       if(path != null || path.equals("/")){
+           agregarProducto(req,resp);
+       }else{
+           resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+       }
        
-        ArrayList <String> producto = new ArrayList<>();
-        
+    }
+    
+    public void agregarProducto(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
        String nombreProducto = req.getParameter("nombreProducto");
        String descProducto = req.getParameter("descripcionProducto");
        String marcaProducto = req.getParameter("marcaProducto");
-       String precioProducto = req.getParameter("precioProducto");
+       Double precioProducto = Double.parseDouble(req.getParameter("precioProducto"));
+       ps.agregarProducto(new Producto(nombreProducto, descProducto, marcaProducto, precioProducto));
        
-       producto.add(nombreProducto);
-       producto.add(descProducto);
-       producto.add(marcaProducto);
-       producto.add("Q" + precioProducto);
-       
-       req.setAttribute("producto", producto);
-       getServletContext().getRequestDispatcher("/formulario-productos/formulario-productos.jsp").forward(req, resp);
+       resp.sendRedirect("/SDBG/index.jsp");
        
     }
+    
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -54,5 +56,23 @@ public class ProductoServlet extends HttpServlet{
         super.init();
         this.ps = new ProductoService();
     }
+    /*
+    resp.setContentType("text/html");
+       
+        ArrayList <String> producto = new ArrayList<>();
+        
+       String nombreProducto = req.getParameter("nombreProducto");
+       String descProducto = req.getParameter("descripcionProducto");
+       String marcaProducto = req.getParameter("marcaProducto");
+       String precioProducto = req.getParameter("precioProducto");
+       
+       producto.add(nombreProducto);
+       producto.add(descProducto);
+       producto.add(marcaProducto);
+       producto.add(precioProducto);
+       
+       req.setAttribute("productos", producto);
+       getServletContext().getRequestDispatcher("/formulario-productos/formulario-productos.jsp").forward(req, resp);
+    */
     
 }
